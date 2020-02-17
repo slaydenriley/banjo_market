@@ -1,8 +1,10 @@
 <p> Welcome, <%= current_user.name %>
 <h2> Listings </h2>
 
-<% @banjos.each do |banjo| %>
+<% @banjos.each_with_index do |banjo, index| %>
   <div>
-    <%= "#{banjo.make} #{banjo.model}"%>
+    <%= "#{index + 1} -" %><a href="/banjos/<%=banjo.id%>/show"><%= "#{banjo.make} #{banjo.model}"%></a>
   </div>
 <% end %>
+
+<a href="/banjos/new">Create a Listing</a>
