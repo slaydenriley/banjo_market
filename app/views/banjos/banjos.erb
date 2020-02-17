@@ -1,3 +1,8 @@
-<h1>Hello World!</h1>
+<p> Welcome, <%= current_user.name %>
+<h2> Listings </h2>
 
-<p><%= @banjos %></p>
+<% @banjos.each do |banjo| %>
+  <div>
+    <%= "#{banjo.make} #{banjo.model}"%>
+  </div>
+<% end %>

@@ -1,3 +1,4 @@
+require 'pry'
 class BanjoController < ApplicationController
     get '/banjos' do
         @banjos = Banjos.all
@@ -17,7 +18,10 @@ class BanjoController < ApplicationController
       if params[:make] == "" || params[:model] == "" || params[:year_made] == "" || params[:price] == ""
         redirect to "/banjos/new"
       else
-        @banjo = current_user.banjos.create(params[:make], params[:model], params[:year_made], params[:price])
+        @banjo = Banjos.new(:make => params[:make], :model => params[:model], :year_made => params[:year_made], :price => params[:price])
+        @banjo.users_id = current_user[:id]
+        @banjo.save
+        @banjo
         redirect to '/banjos'
       end
     else
