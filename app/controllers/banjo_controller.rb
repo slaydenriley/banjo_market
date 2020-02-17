@@ -14,15 +14,11 @@ class BanjoController < ApplicationController
 
     post '/banjos/new' do
     if logged_in?
-      if params[:banjo_make] == "" || params[:banjo_model] == "" || params[:year_made] == "" || params[:price] == ""
+      if params[:make] == "" || params[:model] == "" || params[:year_made] == "" || params[:price] == ""
         redirect to "/banjos/new"
       else
-        @banjo = Banjos.new(make: params[:banjo_make], model: params[:banjo_model], year_made: params[:year_made], price: params[:price])
-        if @banjos.save
-          redirect to "/banjos/#{@banjos.id}"
-        else
-          redirect to "/banjos/new"
-        end
+        @banjo = current_user.banjos.create(params[:make], params[:model], params[:year_made], params[:price])
+        redirect to '/banjos'
       end
     else
       redirect to '/login'
