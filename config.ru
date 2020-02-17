@@ -4,7 +4,6 @@ if ActiveRecord::Migrator.needs_migration?
   raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
 end
 
-use BanjosController
-use CatalogController
-use UsersController
+use BanjoController
+use UserController
 run ApplicationController
