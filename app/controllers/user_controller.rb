@@ -23,7 +23,7 @@ class UserController < Sinatra::Base
         else
           redirect to '/banjos'
         end
-      end
+    end
     
       post '/signup' do
         if params[:name] == "" || params[:email] == "" || params[:password] == ""
@@ -34,5 +34,5 @@ class UserController < Sinatra::Base
           session[:user_id] = @user.id
           redirect to '/banjos'
         end
-      end
+    end
 end
