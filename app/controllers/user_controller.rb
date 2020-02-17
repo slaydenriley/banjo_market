@@ -17,6 +17,10 @@ class UserController < Sinatra::Base
         end
     end
 
+    get '/users/new' do
+        erb :'users/new'
+    end
+
     get '/signup' do
         if !logged_in?
           erb :'users/new', locals: {message: "Please sign up before you sign in"}
