@@ -3,7 +3,7 @@
 
 <% @banjos.each_with_index do |banjo, index| %>
   <div>
-    <%= "#{index + 1} -" %><a href="/banjos/<%=banjo.id%>/show"><%= "#{banjo.make} #{banjo.model}"%></a>
+    <%= "#{index + 1} -" %><a href="/banjos/<%=banjo.id%>"><%= "#{banjo.make} #{banjo.model}"%></a>
   </div>
 <% end %>
 
