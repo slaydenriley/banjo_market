@@ -1,3 +1,3 @@
-class BanjoController < Sinatra::Base
+class BanjoController < ApplicationController
 
 end
