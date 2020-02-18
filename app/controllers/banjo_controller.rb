@@ -51,7 +51,7 @@ class BanjoController < ApplicationController
     get '/banjos/:id/edit' do
         if logged_in?
             @banjo = Banjos.find_by_id(params[:id])
-            if @banjo.id == current_user.id
+            if @banjo.users_id == current_user.id
                 erb :'banjos/edit'
             else
                 redirect to '/banjos'
@@ -65,15 +65,13 @@ class BanjoController < ApplicationController
 
     patch '/banjos/:id' do
         if logged_in?
-            if params[:make] == "" || params[:model] = "" || params[:year_made] == "" || params[:price] == ""
-                redirect to 'banjos/:id/edit'
+            if params[:make] == "" || params[:model] == "" || params[:year_made] == "" || params[:price] == ""
+                redirect to "/banjos/#{params[:id]}/edit"
             else
                 @banjo = Banjos.find_by_id(params[:id])
-                if @banjo.update(make: params[:make], model: params[:model], year_made: params[:year_made], price: params[:price])
-                    redirect to '/banjos/:id'
-                else
-                    redirect to '/banjos/:id/edit'
-                end
+                @banjo.update(make: params[:make], model: params[:model], year_made: params[:year_made], price: params[:price])
+                @banjo.save
+                redirect to "/banjos/#{params[:id]}"
             end
         else
             redirect to '/login'
