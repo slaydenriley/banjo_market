@@ -1,0 +1,9 @@
+<h1><%= @user.name %></h1>
+<h4>Contact: <a href="mailto:<%="#{@user.email}"%>"><%=@user.email%></a></h4>
+
+<% listings = Banjos.find_by(users_id: @user.id) %>
+<h2>User Listings</h2>
+<%  listings.each do |ind| %>
+<%=     ind.make %>
+<%  end %>
+

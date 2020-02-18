@@ -1,10 +1,19 @@
-<p><%= @banjo.make %>
+<h2><%= "#{@banjo.make} #{@banjo.model} (#{@banjo.year_made}) - #{@banjo.price}" %></h2>
+<% owner = Users.find_by_id(@banjo.users_id) %>
 
-<% if @banjo.users_id == current_user.id %>
-    <form method="post" action="/banjos/<%=@banjo.id%>/delete">
-    <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete Listing">
-    </form>
-    <br/>
-    <a href="/banjos/<%=@banjo.id%>/edit">Edit Banjo</a>
-<% end %>    
+<div id="owner details">
+    <h3>Listed by: <%=owner.name%></h3> 
+    <h4>Contact: <a href="mailto:<%="#{owner.email}"%>"><%=owner.email%></a></h4>
+</div>
+<br/>
+
+<div id="banjo actions listing">
+    <% if @banjo.users_id == current_user.id %>
+        <form method="post" action="/banjos/<%=@banjo.id%>/delete">
+        <input id="hidden" type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete Listing">
+        </form>
+        <br/>
+        <a href="/banjos/<%=@banjo.id%>/edit">Edit Banjo</a>
+    <% end %>    
+</div>

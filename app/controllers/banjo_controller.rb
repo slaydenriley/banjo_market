@@ -1,4 +1,5 @@
 class BanjoController < ApplicationController
+
     get '/banjos' do
         if logged_in?
             @banjos = Banjos.all
