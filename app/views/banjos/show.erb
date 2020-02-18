@@ -1,9 +1,15 @@
 <h2><%= "#{@banjo.make} #{@banjo.model} (#{@banjo.year_made}) - #{@banjo.price}" %></h2>
 <% owner = Users.find_by_id(@banjo.users_id) %>
 
+<div id="banjo description">
+    <h3>Description:</h3>
+    <%=@banjo.description%>
+    <br/>
+</div>
+
 <div id="owner details">
     <h3>Listed by: <a href="/users/<%=owner.id%>"><%=owner.name%></a></h3> 
-    <h4>Contact: <a href="mailto:<%="#{owner.email}"%>"><%=owner.email%></a></h4>
+    <h3>Contact: <a href="mailto:<%="#{owner.email}"%>"><%=owner.email%></a></h3>
 </div>
 <br/>
 

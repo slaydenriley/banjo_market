@@ -19,10 +19,10 @@ class BanjoController < ApplicationController
 
     post '/banjos/new' do
         if logged_in?
-            if params[:make] == "" || params[:model] == "" || params[:year_made] == "" || params[:price] == ""
+            if params[:make] == "" || params[:model] == "" || params[:year_made] == "" || params[:price] == "" || params[:description] == ""
                 redirect to "/banjos/new"
             else
-                @banjo = Banjos.new(:make => params[:make], :model => params[:model], :year_made => params[:year_made], :price => params[:price])
+                @banjo = Banjos.new(:make => params[:make], :model => params[:model], :year_made => params[:year_made], :price => params[:price], :description => params[:description])
                 @banjo.users_id = current_user[:id]
                 @banjo.save
                 redirect to '/banjos'
@@ -70,7 +70,7 @@ class BanjoController < ApplicationController
                 redirect to "/banjos/#{params[:id]}/edit"
             else
                 @banjo = Banjos.find_by_id(params[:id])
-                @banjo.update(make: params[:make], model: params[:model], year_made: params[:year_made], price: params[:price])
+                @banjo.update(make: params[:make], model: params[:model], year_made: params[:year_made], price: params[:price], description: params[:description])
                 @banjo.save
                 redirect to "/banjos/#{params[:id]}"
             end
