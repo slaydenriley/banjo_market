@@ -8,3 +8,7 @@
 <li><a href="/banjos/<%=ind.id%>"><%= "#{ind.make} #{ind.model} (#{ind.year_made}) - #{ind.price}"%></a></li>
 <%  end %>
 
+<% if @user.id == current_user.id%>
+    <a href="/users/<%="#{@user.id}"%>/edit">Edit Your Profile</a>
+<% end%>
+
