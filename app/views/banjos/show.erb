@@ -6,8 +6,5 @@
     <input type="submit" value="Delete Listing">
     </form>
     <br/>
-    <form method="POST" action="/banjos/<%=@banjo.id%>/edit">
-    <input id="hidden" type="hidden" name="_method" value="EDIT">
-    <input type="submit" value="Edit Listing">
-    </form>
+    <a href="/banjos/<%=@banjo.id%>/edit">Edit Banjo</a>
 <% end %>    
