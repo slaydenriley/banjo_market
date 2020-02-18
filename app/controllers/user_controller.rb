@@ -1,6 +1,6 @@
 class UserController < ApplicationController
-  get '/users/:slug' do
-    @user = Users.find_by_slug(params[:slug])
+  get '/users/:id' do
+    @user = Users.find_by_id(params[:id])
     erb :'users/show'
   end
 
@@ -31,6 +31,26 @@ class UserController < ApplicationController
 
   get '/signup' do
     erb :'/users/new'
+  end
+
+  get '/users/:id/edit' do
+    @user = current_user
+    erb :'users/edit'
+  end
+
+  patch '/users/:id' do
+    if logged_in?
+      if params[:name] == "" || params[:email] == "" || params[:password] == ""
+        redirect to "/users/#{current_user.id}/edit"
+      else
+        @user = current_user
+        @user.update(name: params[:name], email: params[:email], password: params[:password])
+        @user.save
+        redirect to "/"
+      end
+    else
+      redirect to '/'
+    end
   end
 
   get '/logout' do
