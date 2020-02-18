@@ -34,8 +34,12 @@ class UserController < ApplicationController
   end
 
   get '/users/:id/edit' do
-    @user = current_user
-    erb :'users/edit'
+    if params[:id].to_i == current_user.id
+      @user = current_user
+      erb :'users/edit'
+    else
+      redirect to "/users/#{current_user.id}/edit"
+    end
   end
 
   patch '/users/:id' do

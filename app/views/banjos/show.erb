@@ -2,7 +2,7 @@
 <% owner = Users.find_by_id(@banjo.users_id) %>
 
 <div id="owner details">
-    <h3>Listed by: <%=owner.name%></h3> 
+    <h3>Listed by: <a href="/users/<%=owner.id%>"><%=owner.name%></a></h3> 
     <h4>Contact: <a href="mailto:<%="#{owner.email}"%>"><%=owner.email%></a></h4>
 </div>
 <br/>
