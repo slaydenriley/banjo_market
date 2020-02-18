@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_211958) do
+ActiveRecord::Schema.define(version: 2020_02_18_185747) do
 
   create_table "banjos", force: :cascade do |t|
     t.string "make"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_211958) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
+    t.string "description"
   end
 
 end
