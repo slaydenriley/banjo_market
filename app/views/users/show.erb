@@ -1,18 +1,27 @@
-<div class="centered_elements">
+<div class="full-size-header">
     <h1><%= @user.name %></h1>
-    <h4>Contact: <a href="mailto:<%="#{@user.email}"%>"><%=@user.email%></a></h4>
-    <%= @user.description %>
 </div>
 
-<div class="banjo_listings">
-    <% listings = Banjos.where(users_id: @user.id) %>
-    <h2>User Listings</h2>
-    <%  listings.each do |ind| %>
-    <li><a href="/banjos/<%=ind.id%>"><%= "#{ind.make} #{ind.model} (#{ind.year_made}) - #{ind.price}"%></a></li>
-    <%  end %>
+<div class="row">
+    <div class="row" id="user_info">
+        <h2>Contact: <a href="mailto:<%="#{@user.email}"%>"><%=@user.email%></a></h2>
+        <h2><%= @user.description %></h2>
+    </div>
 
-    <% if @user.id == current_user.id%>
-        <a href="/users/<%="#{@user.id}"%>/edit">Edit Your Profile</a>
-    <% end%>
+    <div class="row main_content">
+        <% listings = Banjos.where(users_id: @user.id) %>
+        <% if @user.id == current_user.id %>
+        <h2>My Listings</h2>
+        <% else%>
+        <h2>User Listings</h2>
+        <% end%>
+        <%  listings.each do |ind| %>
+        <li><a href="/banjos/<%=ind.id%>"><%= "#{ind.make} #{ind.model} (#{ind.year_made}) - #{ind.price}"%></a></li>
+        <%  end %>
+
+        <% if @user.id == current_user.id%>
+            <a href="/users/<%="#{@user.id}"%>/edit">Edit Your Profile</a>
+        <% end%>
+    </div>
 </div>
 

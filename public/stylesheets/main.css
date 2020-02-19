@@ -33,8 +33,8 @@
     text-align: center;
     margin: 0 auto; 
     background-color: #fff;
-    padding-top: 5%;
-    padding-bottom: 5%;
+    padding: 40px;
+    height:100vh;
   }
 
   .main_content a {
@@ -58,19 +58,21 @@
     font-size: 20px;
   }
 
-  .user_listings {
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  #user_info, #banjo_info {
+    background-color: #fff;
     text-align: center;
-    margin: 0 auto;
+    padding: 40px;
+    float: left;
+    width: 50%;
+    height:100vh;
   }
-  .user_listings a {
-    display: inline-block;
-    width: 32%;
-    vertical-align: top;
-    border: 1px solid;
-    padding: 10px;
-    margin: 12px;
-    text-decoration: none;
-  }
+
 
   #new_listing {
     padding-top: 50px;
@@ -168,6 +170,7 @@
     color: #ef6d30;
   }
 
+
   .homepage_header {
     padding: 1% 0;
     background-color: #100e17;
@@ -190,7 +193,6 @@
   }
 
   h2 {
-    border-bottom: 2px solid #ccc;
     font-size: 24px;
     line-height: 36px;
     margin-bottom: 16px;
@@ -242,25 +244,19 @@
     width: auto;
   }
 
-  .content, .sidebar {
-    float: none;
-    width: 100%;
-  }
-
-  .sidebar {
-    background: transparent;
-    border: none;
-    border-top: 2px solid #ccc;
-    padding: 0;
-  }
-
-  h1 {
-    font-size: 24px;
+  .full-size-header h1 {
+    font-size: 12px;
     line-height: 36px;
   }
 
   h2 {
-    font-size: 18px;
+    font-size: 12px;
     line-height: 24px;
   }
+
+  .main_content a {
+    font-size: 12px;
+  }
+
+  
 }

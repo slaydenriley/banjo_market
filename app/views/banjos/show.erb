@@ -1,25 +1,30 @@
-<h2><%= "#{@banjo.make} #{@banjo.model} (#{@banjo.year_made}) - #{@banjo.price}" %></h2>
 <% owner = Users.find_by_id(@banjo.users_id) %>
 
-<div id="banjo description">
-    <h3>Description:</h3>
-    <%=@banjo.description%>
-    <br/>
+<div class="full-size-header">
+    <h1><%= "#{@banjo.make} #{@banjo.model} (#{@banjo.year_made}) - #{@banjo.price}" %></h1>
 </div>
 
-<div id="owner details">
-    <h3>Listed by: <a href="/users/<%=owner.id%>"><%=owner.name%></a></h3> 
-    <h3>Contact: <a href="mailto:<%="#{owner.email}"%>"><%=owner.email%></a></h3>
-</div>
-<br/>
-
-<div id="banjo actions listing">
-    <% if @banjo.users_id == current_user.id %>
-        <form method="post" action="/banjos/<%=@banjo.id%>/delete">
-        <input id="hidden" type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Delete Listing">
-        </form>
+<div class="row">
+    <div class="row" id="banjo_info">
+        <h2>Description:</h2>
+        <h2><%=@banjo.description%></h2>
         <br/>
-        <a href="/banjos/<%=@banjo.id%>/edit">Edit Banjo</a>
-    <% end %>    
+    </div>
+
+    <div class="row main_content">
+        <h2>Listed by:<br/> <a href="/users/<%=owner.id%>"><%=owner.name%></a></h2> 
+        <h2>Contact:<br/> <a href="mailto:<%="#{owner.email}"%>"><%=owner.email%></a></h2>
+    </div>
+    <br/>
+
+    <div id="banjo actions listing">
+        <% if @banjo.users_id == current_user.id %>
+            <form method="post" action="/banjos/<%=@banjo.id%>/delete">
+            <input id="hidden" type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete Listing">
+            </form>
+            <br/>
+            <a href="/banjos/<%=@banjo.id%>/edit">Edit Banjo</a>
+        <% end %>    
+    </div>
 </div>
