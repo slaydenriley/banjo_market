@@ -1,11 +1,9 @@
-<p>Welcome, <%=current_user.name %>! Not you? <a href="/logout">Log Out</a></p>
-<br/>
 <h2>Banjos for Sale</h2>
 
-<% @banjos.each_with_index do |banjo, index| %>
-  <div>
-    <%= "#{index + 1} - " %><a href="/banjos/<%=banjo.id%>"><%= "#{banjo.make} #{banjo.model} (#{banjo.year_made}) - #{banjo.price}"%><br></br></a>
-  </div>
-<% end %>
-<br/>
+<div class="banjo_listings">
+  <% @banjos.each do |banjo| %>
+    <a href="/banjos/<%=banjo.id%>"><%= "#{banjo.make} #{banjo.model} (#{banjo.year_made}) - #{banjo.price}"%></a>
+  <% end %>
+</div>
+
 <a href="/banjos/new">Create a Listing</a>
