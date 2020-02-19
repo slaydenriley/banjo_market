@@ -22,10 +22,14 @@ class UserController < ApplicationController
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
       redirect to '/signup'
     else
-      @user = Users.new(:name => params[:name], :email => params[:email], :password => params[:password], :description => params[:description])
-      if @user.save
-        session[:user_id] = @user.id
-        redirect to '/banjos'
+      if params[:password] == params[:confirm_password]
+        @user = Users.new(:name => params[:name], :email => params[:email], :password => params[:password], :description => params[:description])
+        if @user.save
+          session[:user_id] = @user.id
+          redirect to '/banjos'
+        else
+          redirect to '/signup'
+        end
       else
         redirect to '/signup'
       end
@@ -37,6 +41,7 @@ class UserController < ApplicationController
   end
 
   get '/users/:id/edit' do
+    binding.pry
     if params[:id].to_i == current_user.id
       @user = current_user
       erb :'users/edit'
