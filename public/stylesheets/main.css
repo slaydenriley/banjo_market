@@ -28,15 +28,26 @@
   .banjo_listings {
     text-align: center;
     margin: 0 auto; 
+    background-color: #fff;
+    padding-top: 5%;
+    padding-bottom: 5%;
   }
 
   .banjo_listings a {
     display: inline-block;
-    width: 32%;
+    width: 25%;
     vertical-align: top;
-    border: 1px solid;
+    border: 0px solid;
+    border-radius: 20px;
     padding: 10px;
     margin: 12px;
+    color: #ef6d30;
+    font-size: 20px;
+  }
+
+  .banjo_listings a:hover {
+    background-color: #ef6d30;
+    color: black;
   }
 
   .user_listings {
@@ -50,6 +61,7 @@
     border: 1px solid;
     padding: 10px;
     margin: 12px;
+    text-decoration: none;
   }
 
   input[type="text"], input[type="password"], input[type="number"] {
@@ -78,9 +90,12 @@
     overflow: hidden;
     margin: 0 auto; 
     text-align: center;
-    background-color: #333;
+    background-color: #100e17;
     padding-bottom: 10px;
     padding-top: 10px;
+    left:0px;
+    right:0px;
+    position: fixed;
   }
 
   nav ul li:hover > ul {
@@ -102,7 +117,7 @@
   }
 
   nav ul li:hover a {
-    background-color: #ddd;
+    background-color: #ef6d30;
     color: black;
   }
 
@@ -124,7 +139,7 @@
   }
 
   .full-size-header {
-    background-color: rgb(150, 150, 150);
+    background-color: #100e17;
     padding: 5% 0;
   }
 
@@ -134,13 +149,12 @@
     padding: 10% 0;
     font-size: 80px;
     display: block;
+    color: #ef6d30;
   }
 
   .homepage_header {
     padding: 1% 0;
-    background-image: url('../images/riley_banjo.jpg');
-    background-position: bottom;
-    background-color: #cccccc;
+    background-color: #100e17;
     width: 100%;
     height: 100%;
   }
@@ -150,9 +164,8 @@
     text-align: center;
     padding: 10% 0;
     font-size: 60px;
-    background: #fff;
-    background-size: cover;
     line-height: 70px;
+    color: #ef6d30;
   }
 
   h1 {
@@ -206,6 +219,7 @@
     border-top: 2px solid #ccc;
     margin-top: 20px;
     padding-top: 20px;
+    background-color: #ccc;
   }
 }
 
