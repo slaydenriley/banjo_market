@@ -1,30 +1,18 @@
-<div class="centered_elements">
-    <h1>List a Banjo</h1>
+<div class="full-size-header">
+    <h1>Create a New Listing</h1>
+</div>
+
+<div class="centered_elements" id="new_listing">
     <form method="POST" action='/banjos/new'>
-        <label>Make</label>
+        <input type="text" name="make" placeholder="Banjo Make">
         <br/>
-        <input type="text" name="make">
+        <input type="text" name="model" placeholder="Banjo Model">
         <br/>
+        <input type="number" name="year_made" placeholder="Year Made">
         <br/>
-        <label> Model</label>
+        <input type="text" name="price" placeholder="Price">
         <br/>
-        <input type="text" name="model">
-        <br/>
-        <br/>
-        <label>Year Made</label>
-        <br/>
-        <input type="number" name="year_made">
-        <br/>
-        <br/>
-        <label>Price</label>
-        <br/>
-        <input type="text" name="price">
-        <br/>
-        <br/>
-        <label>Banjo Description:</label>
-        <br/>
-        <textarea name="description"></textarea>
-        <br/>
+        <textarea name="description" value="Description"></textarea>
         <br/>
         <input type="submit" value="List it!">
     </form>

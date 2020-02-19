@@ -1,5 +1,6 @@
 class UserController < ApplicationController
   get '/login' do
+    @current_user = nil
     erb :'/users/login'
   end
 
@@ -7,7 +8,7 @@ class UserController < ApplicationController
     user = Users.find_by(:email => params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect to "/banjos"
+      redirect to "/"
     else
       redirect to '/signup'
     end

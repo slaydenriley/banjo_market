@@ -3,7 +3,7 @@
   <h1>Banjos for Sale</h1>
 </div>
 
-<div class="banjo_listings">
+<div class="main_content">
   <% @banjos.each do |banjo| %>
     <a href="/banjos/<%=banjo.id%>"><%= "#{banjo.make} #{banjo.model} (#{banjo.year_made}) - #{banjo.price}"%></a>
   <% end %>
