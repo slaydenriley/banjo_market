@@ -1,9 +1,4 @@
 class UserController < ApplicationController
-  get '/users/:id' do
-    @user = Users.find_by_id(params[:id])
-    erb :'users/show'
-  end
-
   get '/login' do
     erb :'/users/login'
   end
@@ -40,13 +35,34 @@ class UserController < ApplicationController
     erb :'/users/new'
   end
 
-  get '/users/:id/edit' do
-    binding.pry
-    if params[:id].to_i == current_user.id
-      @user = current_user
-      erb :'users/edit'
+  get '/users' do
+    if logged_in?
+      @users = Users.all
+      erb :'/users/users'
     else
-      redirect to "/users/#{current_user.id}/edit"
+      redirect to '/login'
+    end
+  end
+
+  get '/users/:id' do
+    if logged_in?
+      @user = Users.find_by_id(params[:id])
+      erb :'users/show'
+    else
+      redirect to '/login'
+    end
+  end
+
+  get '/users/:id/edit' do
+    if logged_in?
+      if params[:id].to_i == current_user.id
+        @user = current_user
+        erb :'users/edit'
+      else
+        redirect to "/users/#{current_user.id}/edit"
+      end
+    else
+      redirect to '/login'
     end
   end
 
@@ -58,7 +74,7 @@ class UserController < ApplicationController
         @user = current_user
         @user.update(name: params[:name], email: params[:email], password: params[:password], description: params[:description])
         @user.save
-        redirect to "/"
+        redirect to "/user/#{@user.id}"
       end
     else
       redirect to '/'

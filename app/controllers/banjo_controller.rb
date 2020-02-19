@@ -33,8 +33,12 @@ class BanjoController < ApplicationController
     end
 
     get '/banjos/:id' do
-        @banjo = Banjos.find_by_id(params[:id])
-        erb :'banjos/show'
+        if logged_in?
+            @banjo = Banjos.find_by_id(params[:id])
+            erb :'banjos/show'
+        else
+            redirect to '/login'
+        end
     end
 
     delete '/banjos/:id/delete' do

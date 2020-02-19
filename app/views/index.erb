@@ -1,24 +1,10 @@
 
-<div class="centered_elements">
-<h1>Welcome to Banjo Market!</h1>
+<div class="homepage_header">
+    <h1>Welcome to Banjo Market!</h1>
+</div>
 
-<nav>
-  <% if logged_in? %>
-    <p>Welcome, <a href="/users/<%=current_user.id%>"><%=current_user.name%></a>! Not you? <a href="/logout">Log Out</a></p>
-    <a href="/banjos/new">Add a Banjo</a>
-    <br/>
-    <a href="/banjos">All Listings</a>
-    <br/>
-    <br/>
-    <a href="/users/:slug/edit">Edit Account</a>
-    <br/>
-    <a href="/logout">Log Out</a>
+<div class="centered_elements" id="home">
 
-  <% else %>
-    <a href="/signup">Sign Up</a>
-    <a href="/login"> Sign In </a>
-  <%end %>
 
-</nav>
 </div>
 
