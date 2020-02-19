@@ -138,8 +138,11 @@
 
   .homepage_header {
     padding: 1% 0;
-    background-image: url('../public/images/riley_banjo.jpg');
+    background-image: url('../images/riley_banjo.jpg');
+    background-position: bottom;
     background-color: #cccccc;
+    width: 100%;
+    height: 100%;
   }
 
   .homepage_header h1 {
@@ -147,7 +150,9 @@
     text-align: center;
     padding: 10% 0;
     font-size: 60px;
-    display: block;
+    background: #fff;
+    background-size: cover;
+    line-height: 70px;
   }
 
   h1 {
