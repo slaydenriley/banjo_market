@@ -1,32 +1,35 @@
-<h1>Edit Listing</h1>
+<div class="full-size-header">
+    <h1>Edit Listing</h1>
+</div>
 
-<form method="POST" action='/banjos/<%=@banjo.id%>'>
-    <input id="hidden" type="hidden" name="_method" value="PATCH">
-    <label>Make</label>
-    <br/>
-    <input type="text" name="make" value="<%=@banjo.make%>">
-    <br/>
-    <br/>
-    <label>Model</label>
-    <br/>
-    <input type="text" name="model" value="<%=@banjo.model%>">
-    <br/>
-    <br/>
-    <label>Year Made</label>
-    <br/>
-    <input type="number" name="year_made" value="<%=@banjo.year_made%>">
-    <br/>
-    <br/>
-    <label>Price</label>
-    <br/>
-    <input type="text" name="price" value="<%=@banjo.price%>">
-    <br/>
-    <br/>
-    <label>Banjo Description:</label>
-    <br/>
-    <textarea name="description"><%=@banjo.description%></textarea>
-    <br/>
-    <br/>
-    <input type="submit" value="Submit Changes">
-
-</form>
+<div class="centered_elements" id="edit_banjo">
+    <form method="POST" action='/banjos/<%=@banjo.id%>'>
+        <input id="hidden" type="hidden" name="_method" value="PATCH">
+        <label>Make</label>
+        <br/>
+        <input type="text" name="make" value="<%=@banjo.make%>" required>
+        <br/>
+        <br/>
+        <label>Model</label>
+        <br/>
+        <input type="text" name="model" value="<%=@banjo.model%>" required>
+        <br/>
+        <br/>
+        <label>Year Made</label>
+        <br/>
+        <input type="number" name="year_made" value="<%=@banjo.year_made%>" required>
+        <br/>
+        <br/>
+        <label>Price</label>
+        <br/>
+        <input type="text" name="price" value="<%=@banjo.price%>" required>
+        <br/>
+        <br/>
+        <label>Banjo Description:</label>
+        <br/>
+        <textarea name="description" required><%=@banjo.description%></textarea>
+        <br/>
+        <br/>
+        <input type="submit" value="Submit Changes">
+    </form>
+</div>

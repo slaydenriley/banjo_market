@@ -4,13 +4,13 @@
 
 <div class="centered_elements" id="new_listing">
     <form method="POST" action='/banjos/new'>
-        <input type="text" name="make" placeholder="Banjo Make">
+        <input type="text" name="make" placeholder="Banjo Make" required>
         <br/>
-        <input type="text" name="model" placeholder="Banjo Model">
+        <input type="text" name="model" placeholder="Banjo Model" required>
         <br/>
-        <input type="number" name="year_made" placeholder="Year Made">
+        <input type="number" name="year_made" placeholder="Year Made" required>
         <br/>
-        <input type="text" name="price" placeholder="Price">
+        <input type="text" name="price" placeholder="Price" required>
         <br/>
         <textarea name="description" value="Description"></textarea>
         <br/>

@@ -20,13 +20,16 @@
     <div class="wrapper">
       <nav>
         <ul>
-          <li class="home"><a href="/">Home</a></li>
-          <li class="listings_link"><a href="/banjos">Listings</a></li>
-          <li class="new_listing_link"><a href="/banjos/new">Create Listing</a></li>  
-          <li class="users_link"><a href="/users">Users</a></li> 
           <% if @current_user !=nil%>
+            <li class="home"><a href="/">Home</a></li>
+            <li class="listings_link"><a href="/banjos">Listings</a></li>
+            <li class="new_listing_link"><a href="/banjos/new">Create Listing</a></li>  
+            <li class="users_link"><a href="/users">Users</a></li> 
             <li class="my_profile"><a href="/users/<%="#{current_user.id}"%>">My Profile</a>
             <li class="logout"><a href="/logout">Logout</a>
+          <% else %>
+            <li class="login"><a href="/login">Login</a>
+            <li class="create_account"><a href="/signup">Create an Account</a>
           <%end%>
         </ul>
       </nav>

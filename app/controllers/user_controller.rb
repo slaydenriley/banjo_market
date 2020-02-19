@@ -75,7 +75,7 @@ class UserController < ApplicationController
         @user = current_user
         @user.update(name: params[:name], email: params[:email], password: params[:password], description: params[:description])
         @user.save
-        redirect to "/user/#{@user.id}"
+        redirect to "/users/#{@user.id}"
       end
     else
       redirect to '/'
