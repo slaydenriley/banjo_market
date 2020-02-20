@@ -25,7 +25,11 @@
     margin: 0 auto;
   }
 
-  #login, #edit_user {
+  #login_form {
+    padding: 70px 0px;
+  }
+
+  #edit_user {
     padding-top: 140px;
   }
 

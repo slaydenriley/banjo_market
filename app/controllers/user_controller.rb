@@ -90,4 +90,18 @@ class UserController < ApplicationController
       redirect to '/'
     end
   end
+
+  delete '/users/:id/delete' do
+    if logged_in?
+      @user = Users.find_by_id(params[:id])
+      if @user.id == current_user.id
+          binding.pry
+          banjo = Banjos.find_all_user(@user.id)
+          banjo.delete
+      end
+      redirect to '/users'
+    else
+      redirect to '/login'
+    end
+  end
 end

@@ -21,6 +21,10 @@
 
         <% if @user.id == current_user.id%>
             <a href="/users/<%="#{@user.id}"%>/edit">Edit Your Profile</a>
+            <form method="post" action="/users/<%=@user.id%>/delete">
+                <input id="hidden" type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete Account and Listings">
+            </form>
         <% end%>
     </div>
 </div>
