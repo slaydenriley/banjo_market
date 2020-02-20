@@ -116,7 +116,7 @@
     overflow: hidden;
     margin: 0 auto; 
     text-align: center;
-    background-color: #100e179f;
+    background-color: #100e17;
     padding-bottom: 10px;
     padding-top: 10px;
     left:0px;
@@ -208,6 +208,10 @@
   #home_links a:hover {
     color: black;
     background-color: #ef6d30;
+  }
+
+  #fail_message {
+    color: red;
   }
 
   h1 {

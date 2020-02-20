@@ -3,6 +3,9 @@
 </div>
 
 <div class="centered_elements" id="new_listing"> 
+    <% if @fail_message %>
+        <h4 id="fail_message"><%="#{@fail_message}"%></h4>
+    <% end %>
   <form method="POST" action="/signup">
     <input type="text" name="name" placeholder="Name:" required>
     <br/>

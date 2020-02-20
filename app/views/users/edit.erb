@@ -1,4 +1,7 @@
 <div class="centered_elements" id="edit_user">
+    <% if @fail_message %>
+        <h4 id="fail_message"><%="#{@fail_message}"%></h4>
+    <% end %>
     <h1>Edit Your Profile</h1>
     <form method="POST" action='/users/:id'>
         <input id="hidden" type="hidden" name="_method" value="PATCH">

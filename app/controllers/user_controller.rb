@@ -22,17 +22,20 @@ class UserController < ApplicationController
         @user = Users.new(:name => params[:name], :email => params[:email], :password => params[:password], :description => params[:description])
         if @user.save
           session[:user_id] = @user.id
-          redirect to '/banjos'
+          redirect to '/'
         else
           redirect to '/signup'
         end
       else
+        session[:fail_message] = "Your passwords do not match!"
         redirect to '/signup'
       end
     end
   end
 
   get '/signup' do
+    @fail_message = session[:fail_message]
+    session[:fail_message] = nil
     erb :'/users/new'
   end
 
@@ -56,6 +59,8 @@ class UserController < ApplicationController
 
   get '/users/:id/edit' do
     if logged_in?
+      @fail_message = session[:fail_message]
+      session[:fail_message] = nil
       if params[:id].to_i == current_user.id
         @user = current_user
         erb :'users/edit'
@@ -74,8 +79,8 @@ class UserController < ApplicationController
         @user.update(name: params[:name], email: params[:email], password: params[:password], description: params[:description])
         @user.save
       elsif params[:password] && params[:password] != params[:confirm_password]
-        flash[:notice] = "Passwords do not match!"
-        redirect to "users/#{@user.id}/edit"
+        session[:fail_message] = "Your passwords do not match!"
+        redirect to "/users/#{@user.id}/edit"
       else
         @user.update(name: params[:name], email: params[:email], description: params[:description])
         @user.save
