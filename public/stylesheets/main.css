@@ -43,18 +43,17 @@
     background-color: #fff;
     padding: 40px;
     height:100vh;
+    line-height: 100px;
   }
 
   .main_content a {
-    display: inline-block;
-    width: 25%;
-    vertical-align: top;
-    border: 0px solid;
-    border-radius: 20px;
-    padding: 10px;
-    margin: 12px;
-    color: #ef6d30;
-    font-size: 20px;
+    color: white;
+    background-color: black;
+    font-size: 30px;
+    padding: 1%;
+    text-decoration: none;
+    border-radius: 40px;
+    margin: 0px 15px;
   }
 
   .main_content a:hover {
@@ -99,24 +98,25 @@
   }
 
   input[type="submit"] {
-    background-color: rgb(0, 0, 0);
-    color: #fff;
-    text-align: center;
-    font-size: 15px; 
-    padding: 10px;
-    border-radius: 18px;
+    color: white;
+    background-color: black;
+    font-size: 30px;
+    padding: 1%;
+    text-decoration: none;
+    border-radius: 40px;
+    margin: 0px 15px;
   }
 
   input[type="submit"]:hover {
-    background-color: #f2f2f2;
-    color: #000
+    background-color: #ef6d30;
+    color: black;
   }
 
   nav {
     overflow: hidden;
     margin: 0 auto; 
     text-align: center;
-    background-color: #100e17;
+    background-color: #100e179f;
     padding-bottom: 10px;
     padding-top: 10px;
     left:0px;
@@ -183,6 +183,32 @@
     color: #ef6d30;
   }
 
+  #home p {
+    font-size: 28px;
+    padding-top: 40px;
+    width: 50%;
+    margin: 0 auto;
+    line-height: 40px;
+  }
+
+  #home_links {
+    padding: 50px 0px;
+  }
+
+  #home_links a {
+    color: white;
+    background-color: black;
+    font-size: 30px;
+    padding: 1%;
+    text-decoration: none;
+    border-radius: 40px;
+    margin: 0px 15px;
+  }
+
+  #home_links a:hover {
+    color: black;
+    background-color: #ef6d30;
+  }
 
   h1 {
     font-size: 36px;

@@ -6,6 +6,7 @@
     <div class="row" id="user_info">
         <h2>Contact: <a href="mailto:<%="#{@user.email}"%>"><%=@user.email%></a></h2>
         <h2><%= @user.description %></h2>
+        
     </div>
 
     <div class="row main_content">
@@ -20,6 +21,7 @@
         <%  end %>
 
         <% if @user.id == current_user.id%>
+            <h2>Account Actions</h2>
             <a href="/users/<%="#{@user.id}"%>/edit">Edit Your Profile</a>
             <form method="post" action="/users/<%=@user.id%>/delete">
                 <input id="hidden" type="hidden" name="_method" value="DELETE">

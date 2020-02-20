@@ -69,14 +69,18 @@ class UserController < ApplicationController
 
   patch '/users/:id' do
     if logged_in?
-      if params[:name] == "" || params[:email] == "" || params[:password] == ""
-        redirect to "/users/#{current_user.id}/edit"
-      else
-        @user = current_user
+      @user = current_user
+      if params[:password] && params[:password] == params[:confirm_password]
         @user.update(name: params[:name], email: params[:email], password: params[:password], description: params[:description])
         @user.save
-        redirect to "/users/#{@user.id}"
+      elsif params[:password] && params[:password] != params[:confirm_password]
+        flash[:notice] = "Passwords do not match!"
+        redirect to "users/#{@user.id}/edit"
+      else
+        @user.update(name: params[:name], email: params[:email], description: params[:description])
+        @user.save
       end
+      redirect to "/users/#{@user.id}"
     else
       redirect to '/'
     end
@@ -95,11 +99,13 @@ class UserController < ApplicationController
     if logged_in?
       @user = Users.find_by_id(params[:id])
       if @user.id == current_user.id
-          binding.pry
-          banjo = Banjos.find_all_user(@user.id)
+        banjos = Banjos.where(users_id: @user.id)
+        banjos.each do |banjo|
           banjo.delete
+        end
+        @user.delete
+        redirect to '/logout'
       end
-      redirect to '/users'
     else
       redirect to '/login'
     end
