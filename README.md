@@ -6,8 +6,6 @@ Banjo Market was created for Flatiron School's Sinatra porfolio project. The gui
 
 Check out my [blog](https://slaydenriley.github.io/banjo_market_-_sinatra_app).
 
-<img src="https://github.com/barbarajohnsonATX/sinatra-portfolio/blob/master/public/images/ScreenShot.png" width="800">
-
 ## Installation
 * Clone this repo
 * Run bundle install
