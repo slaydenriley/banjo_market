@@ -1,13 +1,12 @@
 class BanjosController < ApplicationController
-
-    get '/banjos' do
-        if logged_in?
-            @banjos = Banjo.all
-            erb :'banjos/banjos'
-        else
-            redirect to '/login'
-        end
+  get '/banjos' do
+    if logged_in?
+      @banjos = Banjo.all
+      erb :'banjos/banjos'
+    else
+      redirect to '/login'
     end
+  end
 
     get '/banjos/new' do
         if logged_in?
@@ -22,8 +21,7 @@ class BanjosController < ApplicationController
             if params[:make] == "" || params[:model] == "" || params[:year_made] == "" || params[:price] == "" || params[:description] == ""
                 redirect to "/banjos/new"
             else
-                @banjo = Banjo.new(:make => params[:make], :model => params[:model], :year_made => params[:year_made], :price => params[:price], :description => params[:description])
-                @banjo.users_id = current_user[:id]
+                @banjo = current_user.banjos.build(:make => params[:make], :model => params[:model], :year_made => params[:year_made], :price => params[:price], :description => params[:description])
                 @banjo.save
                 redirect to '/banjos'
             end

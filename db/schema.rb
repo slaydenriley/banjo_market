@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_18_195435) do
+ActiveRecord::Schema.define(version: 2020_02_27_035920) do
 
   create_table "banjos", force: :cascade do |t|
     t.string "make"
     t.string "model"
     t.integer "year_made"
     t.string "price"
-    t.integer "users_id"
+    t.integer "user_id"
     t.string "description"
   end
 
