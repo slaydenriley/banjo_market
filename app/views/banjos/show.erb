@@ -1,5 +1,3 @@
-<% binding.pry %>
-
 <div class="full-size-header">
     <h1><%= "#{@banjo.make} #{@banjo.model} (#{@banjo.year_made}) - #{@banjo.price}" %></h1>
 </div>
@@ -9,7 +7,7 @@
         <h2>Description:</h2>
         <h2><%=@banjo.description%></h2>
         <br/>
-        <% if @banjo.users_id == current_user.id %>
+        <% if @banjo.user_id == current_user.id %>
             <form method="post" action="/banjos/<%=@banjo.id%>/delete">
             <input id="hidden" type="hidden" name="_method" value="DELETE">
             <input type="submit" value="Delete Listing">
@@ -20,7 +18,7 @@
     </div>
 
     <div class="row main_content">
-        <h2>Listed by:<br/><br/> <a href="/users/<%=owner.id%>"><%=owner.name%></a><br/><br/></h2> 
-        <h2>Contact:<br/><br/> <a href="mailto:<%="#{owner.email}"%>"><%=owner.email%></a></h2>
+        <h2>Listed by:<br/><br/> <a href="/users/<%=@banjo.user.id%>"><%=@banjo.user.name%></a><br/><br/></h2> 
+        <h2>Contact:<br/><br/> <a href="mailto:<%="#{@banjo.user.email}"%>"><%=@banjo.user.email%></a></h2>
     </div>
 </div>

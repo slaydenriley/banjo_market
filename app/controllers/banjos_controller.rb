@@ -42,7 +42,7 @@ class BanjosController < ApplicationController
     delete '/banjos/:id/delete' do
         if logged_in?
             @banjo = Banjo.find_by_id(params[:id])
-            if @banjo.users_id == current_user.id
+            if @banjo.user_id == current_user.id
                 @banjo.delete
             end
             redirect to '/banjos'
@@ -54,7 +54,7 @@ class BanjosController < ApplicationController
     get '/banjos/:id/edit' do
         if logged_in?
             @banjo = Banjo.find_by_id(params[:id])
-            if @banjo.users_id == current_user.id
+            if @banjo.user_id == current_user.id
                 erb :'banjos/edit'
             else
                 redirect to '/banjos'

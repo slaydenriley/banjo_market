@@ -10,13 +10,12 @@
     </div>
 
     <div class="row main_content">
-        <% listings = Banjo.where(users_id: @user.id) %>
         <% if @user.id == current_user.id %>
         <h2>My Listings</h2>
         <% else%>
         <h2>User Listings</h2>
         <% end%>
-        <%  listings.each do |ind| %>
+        <%  @user.banjos.each do |ind| %>
         <li><a href="/banjos/<%=ind.id%>"><%= "#{ind.make} #{ind.model} (#{ind.year_made}) - #{ind.price}"%></a></li>
         <%  end %>
 
