@@ -2,20 +2,16 @@
   <h1>Banjos for Sale</h1>
 </div>
 
-<div class="main_content">
-  <div class="card">
-    <img src="https://i.imgur.com/AwI0VdO.jpg" alt="Banjo">
-    <div class="container">
-      <% @banjos.each do |banjo| %>
-        <a href="/banjos/<%=banjo.id%>"><%= "#{banjo.make} #{banjo.model} (#{banjo.year_made}) #{banjo.price}"%></a>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<div class="main_content">
+<div class="banjo_cards">
   <% @banjos.each do |banjo| %>
-    <a href="/banjos/<%=banjo.id%>"><%= "#{banjo.make} #{banjo.model} (#{banjo.year_made}) - #{banjo.price}"%></a>
+    <div class="card">
+      <div class="ind_banjo_card">
+        <h4 id="banjo_title"><a href="/banjos/<%=banjo.id%>"><%= "#{banjo.make} #{banjo.model} (#{banjo.year_made})"%></a></h4><br/>
+        <h4 id="banjo_price"><%= "#{banjo.price}" %></h4>
+      </div>
+    </div>
   <% end %>
 </div>
+
+
 
