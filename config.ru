@@ -1,6 +1,6 @@
 require './config/environment'
 
 use Rack::MethodOverride
-use UserController
-use BanjoController
+use UsersController
+use BanjosController
 run ApplicationController

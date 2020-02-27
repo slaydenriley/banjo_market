@@ -1,4 +1,4 @@
-<% owner = Users.find_by_id(@banjo.users_id) %>
+<% owner = User.find_by_id(@banjo.users_id) %>
 
 <div class="full-size-header">
     <h1><%= "#{@banjo.make} #{@banjo.model} (#{@banjo.year_made}) - #{@banjo.price}" %></h1>

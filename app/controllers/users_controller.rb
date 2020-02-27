@@ -1,11 +1,11 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   get '/login' do
     @current_user = nil
     erb :'/users/login'
   end
 
   post '/login' do
-    user = Users.find_by(:email => params[:email])
+    user = User.find_by(:email => params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect to "/"
@@ -19,7 +19,7 @@ class UserController < ApplicationController
       redirect to '/signup'
     else
       if params[:password] == params[:confirm_password]
-        @user = Users.new(:name => params[:name], :email => params[:email], :password => params[:password], :description => params[:description])
+        @user = User.new(:name => params[:name], :email => params[:email], :password => params[:password], :description => params[:description])
         if @user.save
           session[:user_id] = @user.id
           redirect to '/'
@@ -41,7 +41,7 @@ class UserController < ApplicationController
 
   get '/users' do
     if logged_in?
-      @users = Users.all
+      @users = User.all
       erb :'/users/users'
     else
       redirect to '/login'
@@ -50,7 +50,7 @@ class UserController < ApplicationController
 
   get '/users/:id' do
     if logged_in?
-      @user = Users.find_by_id(params[:id])
+      @user = User.find_by_id(params[:id])
       erb :'users/show'
     else
       redirect to '/login'
@@ -102,9 +102,9 @@ class UserController < ApplicationController
 
   delete '/users/:id/delete' do
     if logged_in?
-      @user = Users.find_by_id(params[:id])
+      @user = User.find_by_id(params[:id])
       if @user.id == current_user.id
-        banjos = Banjos.where(users_id: @user.id)
+        banjos = Banjo.where(users_id: @user.id)
         banjos.each do |banjo|
           banjo.delete
         end
