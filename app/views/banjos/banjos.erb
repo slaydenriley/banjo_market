@@ -3,7 +3,19 @@
 </div>
 
 <div class="main_content">
+  <div class="card">
+    <img src="https://i.imgur.com/AwI0VdO.jpg" alt="Banjo">
+    <div class="container">
+      <% @banjos.each do |banjo| %>
+        <a href="/banjos/<%=banjo.id%>"><%= "#{banjo.make} #{banjo.model} (#{banjo.year_made}) #{banjo.price}"%></a>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="main_content">
   <% @banjos.each do |banjo| %>
     <a href="/banjos/<%=banjo.id%>"><%= "#{banjo.make} #{banjo.model} (#{banjo.year_made}) - #{banjo.price}"%></a>
   <% end %>
 </div>
+
