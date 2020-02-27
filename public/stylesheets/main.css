@@ -12,8 +12,12 @@
   }
 
   /* --- Welcome Page Styles --- */
+  .banjo_listings {
+    height: 150%;
+    padding-bottom: 100px;
+  }
+
   .card {
-    /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     width: 350px;
@@ -29,14 +33,14 @@
 
   .banjo_cards {
     display: flex;
-    align-content: center;
     justify-content: center;
-    height: 100vh;
+    
+    flex-wrap: wrap;
   }
 
   .ind_banjo_card {
-    margin: auto;
     padding-top: 100px;
+    position: relative;
   }
 
   .card a {
@@ -49,8 +53,10 @@
     font-size: 40px;
   }
 
-  #banjo_price {
+  .banjo_price_bottom {
+    background-color: white;
     font-size: 40px;
+    margin-top: 50px;
   }
 
   .container {
@@ -172,6 +178,7 @@
     left:0px;
     right:0px;
     position: fixed;
+    z-index: 9999;
   }
 
   nav ul li:hover > ul {
@@ -329,6 +336,14 @@
   .main_content {
     font-size: 12px;
     float: none;
+  }
+
+  .full-size-header {
+    height: 400px;
+  }
+
+  .full-size-header h1 {
+    padding-top: 200px;
   }
 
   
