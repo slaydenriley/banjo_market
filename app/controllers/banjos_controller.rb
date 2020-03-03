@@ -8,27 +8,27 @@ class BanjosController < ApplicationController
     end
   end
 
-    get '/banjos/new' do
-        if logged_in?
-          erb :'banjos/new'
-        else
-          redirect to '/login'
-        end
+  get '/banjos/new' do
+    if logged_in?
+      erb :'banjos/new'
+    else
+      redirect to '/login'
     end
+  end
 
-    post '/banjos/new' do
-        if logged_in?
-            if params[:make] == "" || params[:model] == "" || params[:year_made] == "" || params[:price] == "" || params[:description] == ""
-                redirect to "/banjos/new"
-            else
-                @banjo = current_user.banjos.build(:make => params[:make], :model => params[:model], :year_made => params[:year_made], :price => params[:price], :description => params[:description])
-                @banjo.save
-                redirect to '/banjos'
-            end
-        else
-            redirect to '/login'
-        end
+  post '/banjos/new' do
+    if logged_in?
+      if params[:make] == "" || params[:model] == "" || params[:year_made] == "" || params[:price] == "" || params[:description] == ""
+        redirect to "/banjos/new"
+      else
+        @banjo = current_user.banjos.build(:make => params[:make], :model => params[:model], :year_made => params[:year_made], :price => params[:price], :description => params[:description])
+        @banjo.save
+        redirect to '/banjos'
+      end
+    else
+      redirect to '/login'
     end
+  end
 
     get '/banjos/:id' do
         if logged_in?
