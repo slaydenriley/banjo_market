@@ -104,11 +104,7 @@ class UsersController < ApplicationController
     if logged_in?
       @user = User.find_by_id(params[:id])
       if @user.id == current_user.id
-        banjos = Banjo.where(users_id: @user.id)
-        banjos.each do |banjo|
-          banjo.delete
-        end
-        @user.delete
+        @user.destroy
         redirect to '/logout'
       end
     else
