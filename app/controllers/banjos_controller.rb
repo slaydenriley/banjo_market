@@ -30,55 +30,57 @@ class BanjosController < ApplicationController
     end
   end
 
-    get '/banjos/:id' do
-        if logged_in?
-            @banjo = Banjo.find_by_id(params[:id])
-            erb :'banjos/show'
-        else
-            redirect to '/login'
-        end
+  get '/banjos/:id' do
+    if logged_in?
+      @banjo = Banjo.find_by_id(params[:id])
+        erb :'banjos/show'
+    else
+      edirect to '/login'
     end
+  end
 
-    delete '/banjos/:id/delete' do
-        if logged_in?
-            @banjo = Banjo.find_by_id(params[:id])
-            if @banjo.user_id == current_user.id
-                @banjo.delete
-            end
-            redirect to '/banjos'
-          else
-            redirect to '/login'
-          end
+  delete '/banjos/:id/delete' do
+    if logged_in?
+      @banjo = Banjo.find_by_id(params[:id])
+      if @banjo.user_id == current_user.id
+        @banjo.delete
+      else
+        redirect to '/banjos'
+      end
+      redirect to '/banjos'
+    else
+      redirect to '/login'
     end
+  end
 
-    get '/banjos/:id/edit' do
-        if logged_in?
-            @banjo = Banjo.find_by_id(params[:id])
-            if @banjo.user_id == current_user.id
-                erb :'banjos/edit'
-            else
-                redirect to '/banjos'
-            end
-        else
-            redirect to '/login'
-        end
-
+  get '/banjos/:id/edit' do
+    if logged_in?
+      @banjo = Banjo.find_by_id(params[:id])
+      if @banjo.user_id == current_user.id
+        erb :'banjos/edit'
+      else
+        redirect to '/banjos'
+      end
+    else
+      redirect to '/login'
     end
+  end
 
 
-    patch '/banjos/:id' do
-        if logged_in?
-            if params[:make] == "" || params[:model] == "" || params[:year_made] == "" || params[:price] == ""
-                redirect to "/banjos/#{params[:id]}/edit"
-            else
-                @banjo = Banjo.find_by_id(params[:id])
-                @banjo.update(make: params[:make], model: params[:model], year_made: params[:year_made], price: params[:price], description: params[:description])
-                @banjo.save
-                redirect to "/banjos/#{params[:id]}"
-            end
-        else
-            redirect to '/login'
-        end
+  patch '/banjos/:id' do
+    if logged_in?
+      if params[:make] == "" || params[:model] == "" || params[:year_made] == "" || params[:price] == ""
+        redirect to "/banjos/#{params[:id]}/edit"
+      else
+        @banjo = Banjo.find_by_id(params[:id])
+        @banjo.update(make: params[:make], model: params[:model], year_made: params[:year_made], price: params[:price], description: params[:description])
+        @banjo.save
+        redirect to "/banjos/#{params[:id]}"
+      end  
+    else
+      redirect to '/login'
     end
+  end
+  
 end
 
